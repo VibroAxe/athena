@@ -20,11 +20,13 @@ View::composer('layouts.default.nav', function($view)
 					'title' => $page['title'],
 					'link' => URL::route('pages.show', $page->id),
 				];
-			}
-			$menuItems[] = [
-				'title' => 'All Pages',
-				'link' => URL::route('pages.index'),
-			];
+      }
+      if ( Config::get('lanager/nav.showAllPages',true) ) {
+			  $menuItems[] = [
+			  	'title' => 'All Pages',
+			  	'link' => URL::route('pages.index'),
+        ];
+      }
 		}
 		else
 		{
