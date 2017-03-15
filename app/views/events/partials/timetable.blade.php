@@ -42,8 +42,8 @@
 			slotEventOverlap: false,
 			editable: false,
 			allDaySlot: false, // todo: implement all day events in database
-			defaultView: 'agendaDay',
-			firstDay: 1,
+      defaultView: '<?php echo Config::get('lanager/timetable.defaultView','agendaDay'); ?>',
+      firstDay: <?php echo Config::get('lanager/timetable.firstDay',1); ?>,
 			theme: false,
 			height: "auto",
 			eventColor: "#0f6c00",
