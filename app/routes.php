@@ -141,5 +141,5 @@ function()
 */
 Route::get('/', function()
 {
-	return Redirect::to('shouts');
+	return Redirect::to(Config::get('lanager/config.startPage','shouts'));
 });

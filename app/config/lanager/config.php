@@ -12,6 +12,7 @@ return [
 	|
 	*/
 
-	'installed'	=> false,
+  'installed'	=> true,
 
+  'startPage' => 'events',
 ];
