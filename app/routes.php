@@ -95,6 +95,7 @@ function()
 	|--------------------------------------------------------------------------
 	*/
   Route::get('projector/manage', ['as' => 'projector.manage','uses' => 'ProjectorController@manage']);
+  Route::get('projector/{id}/toggle', ['as' => 'projector.toggle','uses' => 'ProjectorController@toggle']);
   Route::resource('projector', 'ProjectorController');
 });
 

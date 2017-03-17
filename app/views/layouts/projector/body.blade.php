@@ -5,7 +5,7 @@ html, body, form {
     height: 100%;
     margin: 0;         /* Reset default margin on the body element */
     background-color: #000000;
-    background-image: url('/Images/ProjectorBackground.png');
+    background-image: url('/img/bg-slide-html.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: top;

@@ -1,3 +1,4 @@
+@use('Timespan');
 @extends('layouts.default')
 @section('content')
 	@include('layouts.default.title')
@@ -12,6 +13,7 @@
           <th class="text-center">Timeout</th>
           <th class="text-center">Order</th>
           <th class="text-center">Active</th>
+          <th>Active Time</th>
           <th>Last Updated</th>
 		  		<th class="text-center">{{ Icon::cog() }}</th>
 					@endif
@@ -38,7 +40,13 @@
                   <span style="color:red;">{{ Icon::remove() }}</span>
                 @endif
                 </a>
-						</td>
+            </td>
+            <td>
+                  @if ($slide->startdate == null && $slide->enddate == null)
+                  @else
+                    {{ $slide->activeSummary() }}
+                  @endif
+            </td>
 					  <td>{{ $slide->updated_at->diffForHumans() }}</td>
 						<td class="text-center">
 							@include('buttons.edit', ['resource' => 'projector', 'item' => $slide, 'size' => 'extraSmall'])
