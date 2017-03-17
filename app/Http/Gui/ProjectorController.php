@@ -68,7 +68,24 @@ class ProjectorController extends ResourceServiceController {
 					->with( 'title', $slide->title )
           ->with( 'slide', $slide );
     }
-	}
+  }
+
+  /**
+   * Toggle active status for the specified resource
+   *
+   * @param  int  $id
+   * @return Response
+   */
+  public function toggle( $id ) {
+    $slide = $this->service->single($id);
+    if ($slide->published == 1) {
+      $slide->published = 0;
+    } else {
+      $slide->published = 1;
+    }
+    $slide->save();
+    return Redirect::route( 'projector.manage' );
+  }
 
 	/**
 	 * Show the form for editing the specified resource.

@@ -32,7 +32,7 @@
 
 {{ ControlGroup::generate(
 	Form::label('timespan', 'Time Span'),
-	Form::text('position',NULL,['placeholder' => 'The time in seconds to show the slide for', 'maxlength' => 10]),
+	Form::text('timespan',NULL,['placeholder' => 'The time in seconds to show the slide for', 'maxlength' => 10]),
 	NULL,
 	2,
 	9
@@ -41,12 +41,28 @@
 
 {{ ControlGroup::generate(
 	Form::label('position', 'Position'),
-	Form::text('position',NULL,['placeholder' => 'The position of the page in dropdown menus', 'maxlength' => 10]),
+	Form::text('position',NULL,['placeholder' => 'The position of the page in the rotation', 'maxlength' => 10]),
 	Form::help('This number determines the order of the slide in the proejction sequence'),
 	2,
 	9
 )
 }}
+
+{{ ControlGroup::generate(
+  Form::label('startdate', 'Start Date'),
+  View::make('datetimepicker', ['name' => 'startdate'] ),
+  Form::help('Leave blank to have no date/time restrictions'),
+  2,
+  9
+) }}
+
+{{ ControlGroup::generate(
+  Form::label('enddate', 'End Date'),
+  View::make('datetimepicker', ['name' => 'enddate'] ),
+  Form::help('Leave blank to have no date/time restrictions'),
+  2,
+  9
+) }}
 
 
 <div class="form-group">

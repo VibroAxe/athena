@@ -131,7 +131,10 @@ abstract class ResourceService {
 	protected function filter( $model )
 	{
 		foreach ( $this->filters as $filter )
-		{
+    {
+      if ( $filter[0] == 'whereRaw' AND count( $filter ) == 2 )
+        $model = $model->whereRaw( $filter[1] );
+      
 			if ( $filter[0] == 'where' AND count( $filter ) == 3 )
 				$model = $model->where( $filter[1], $filter[2] );
 

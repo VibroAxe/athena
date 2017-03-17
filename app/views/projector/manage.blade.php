@@ -25,15 +25,19 @@
             <td class="text-center">{{ $slide->timespan }}</td>
             <td class="text-center">{{ $slide->position }}</td>
             <td class="text-center">
+              <a href="{{ url()."/projector/".$slide->id."/toggle" }}">
 							  @if ( $slide->published ) 
-                  @if ($slide->startdate != null || $slide->enddate != null || $slide->starttime != null || $slide->endtime != null)
+                  @if (($slide->startdate == null || $slide->startdate <= date('Y-m-d H:i:s')) && ($slide->enddate == null || $slide->enddate >= date('Y-m-d H:i:s')))
+                    <span style="color: #5CB85C;">{{ Icon::ok() }}</span>
+                  @elseif ( $slide->startdate != null && $slide->startdate >= date('Y-m-d H:i:s'))
                     <span style="color: orange;">{{ Icon::ok() }}</span>
                   @else
-                    <span style="color: #5CB85C;">{{ Icon::ok() }}</span>
+                    <span style="color: red;">{{ Icon::ok() }}</span>
                   @endif
                 @else
                   <span style="color:red;">{{ Icon::remove() }}</span>
                 @endif
+                </a>
 						</td>
 					  <td>{{ $slide->updated_at->diffForHumans() }}</td>
 						<td class="text-center">
@@ -44,7 +48,19 @@
 				</tr>
 			@endforeach
 			</tbody>
-		</table>
+    </table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Key:</th>
+          <th class="text-right"><span style="color:red;">{{ Icon::remove() }}</span> Inactive</th>
+          <th class="text-right"><span style="color:#5CB85C;">{{ Icon::ok() }}</span> Active</th>
+          <th class="text-right"><span style="color:orange;">{{ Icon::ok() }}</span> Active (Awaiting Start)</th>
+          <th class="text-right"><span style="color:red;">{{ Icon::ok() }}</span> Active (Finished)</th>
+        </tr>
+      </thead>
+    </table>
+          
 	@else
 		<p>No pages found!</p>
 	@endif

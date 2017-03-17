@@ -60,8 +60,17 @@ class ProjectorService extends ResourceService {
 
 	protected function domainRulesOnRead( $input )
 	{
-		if ( ! $this->user->hasRole( 'Projector Admin' ) )
-			$this->addFilter( 'where', 'published', true );
+    if ( ! $this->user->hasRole( 'Projector Admin' ) ) {
+        $filter =  "(".
+                    "`published` = '1'".
+                    ") AND (".
+                    "(`enddate` IS NULL) OR (`enddate` >= '".date('Y-m-d H:i:s')."')".
+                    ") AND (".
+                    "(`startdate` IS NULL) OR (`startdate` <= '".date('Y-m-d H:i:s')."')".
+                    ")";
+//      $this->addFilter( 'where', 'published', true );
+        $this->addFilter('whereRaw',$filter);
+    }
 	}
 
 }
