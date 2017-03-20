@@ -34,5 +34,7 @@ return [
 	'UserAchievement'		=> 'user achievement',
 	'user-achievements'		=> 'user achievement',
 	'UserRole'				=> 'user role',
-	'user-roles'			=> 'user role',
+  'user-roles'			=> 'user role',
+  'Projector'     => 'slide',
+  'projector'     => 'slide',
 ];

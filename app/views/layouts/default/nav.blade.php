@@ -26,6 +26,13 @@ if ( Config::get('lanager/nav.showGames',true) ) {
   ];
 }
 
+if ( Config::get('lanager/nav.showProjector',true) ) {
+  $navbar[] = [
+    'title' => 'Projector',
+    'link' => URL::route('projector.index'),
+    ];
+}
+
 if ( Config::get('lanager/nav.showInfo',true) ) {
   $navbar[] = [
     'Info',

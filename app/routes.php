@@ -89,6 +89,14 @@ function()
 	|--------------------------------------------------------------------------
 	*/
 	Route::get('dashboard', ['as' => 'dashboard.index', 'uses' => 'DashboardController@index']);
+	/*
+	|--------------------------------------------------------------------------
+	| Projector
+	|--------------------------------------------------------------------------
+	*/
+  Route::get('projector/manage', ['as' => 'projector.manage','uses' => 'ProjectorController@manage']);
+  Route::get('projector/{id}/toggle', ['as' => 'projector.toggle','uses' => 'ProjectorController@toggle']);
+  Route::resource('projector', 'ProjectorController');
 });
 
 /*
@@ -115,7 +123,8 @@ function()
 		Route::resource('user-roles',			'UserRolesController',			['except' => ['create', 'edit', 'update'] ]);
 		Route::resource('users',				'UsersController',				['except' => ['create', 'store', 'edit', 'update'] ]);
 		Route::resource('application-usage',	'ApplicationUsageController',	['except' => ['create', 'show', 'store', 'edit', 'update', 'destroy'] ]);
-		Route::resource('logs',					'LogsController',				['except' => ['create', 'store', 'edit', 'update', 'destroy'] ]);
+    Route::resource('logs',					'LogsController',				['except' => ['create', 'store', 'edit', 'update', 'destroy'] ]);
+    Route::resource('projector',     'ProjectorController',      ['except' => ['create', 'edit'] ]);
 		
 		// List of endpoints
 		Route::get('/', ['as' => 'api.index', function () {
