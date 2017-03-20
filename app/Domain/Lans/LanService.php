@@ -49,4 +49,10 @@ class LanService extends ResourceService  {
 		return $rules;
 	}
 
+	protected function domainRulesOnRead( $input)
+	{
+		if ( ! $this->user->hasRole( 'Super Admin' ) )
+			$this->addFilter('where', 'published', true);
+	}
+
 }

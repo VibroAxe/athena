@@ -16,6 +16,7 @@ class LanTransformer extends TransformerAbstract {
 			'name'			=> $lan->name,
 			'start'			=> date('c',strtotime($lan->start)),
 			'end'			=> date('c',strtotime($lan->end)),
+			'published'		=> (bool) $lan->published,
 			'links'			=> [
 				[
 					'rel' => 'self',

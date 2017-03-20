@@ -9,7 +9,9 @@ class Lan extends BaseModel {
 
 	protected $presenter = 'Zeropingheroes\Lanager\Domain\Lans\LanPresenter';
 
-	protected $fillable = ['name', 'start', 'end'];
+	protected $fillable = ['name', 'start', 'end', 'published'];
+
+	protected $optional = ['published'];
 
 	/**
 	 * A single LAN has many user achievements
