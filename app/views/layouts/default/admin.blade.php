@@ -22,7 +22,8 @@
         <li><a href="{{ route('projector.manage') }}">{{ Icon::picture() }} Manage Projector Slides</a></li>
       @endif
 			@if ( Authority::can('manage', 'pages') )
-				<li><a href="{{ route('pages.create') }}">{{ Icon::file() }} Create Page</a></li>
+        <li><a href="{{ route('pages.create') }}">{{ Icon::file() }} Create Page</a></li>
+        <li><a href="{{ route('pages.index') }}">{{Icon::file() }} Manage Pages</a></li>
 			@endif
 			@if ( Authority::can('manage', 'achievements') )
 				<li><a href="{{ route('achievements.create') }}">{{ Icon::certificate() }} Create Achievement</a></li>
