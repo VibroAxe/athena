@@ -13,6 +13,6 @@ return [
 	*/
 
   'installed'	=> true,
-
-  'startPage' => 'events',
+  'title' => 'LANPortal',
+  'startPage' => '/pages/1',
 ];
