@@ -39,8 +39,8 @@ iframe {
 }
 
 div.bgspacer {
-    padding-top: 150px;
-    padding-bottom: 150px;
+    padding-top: 125px;
+    padding-bottom: 125px;
 }
 
 div.sbPost {
