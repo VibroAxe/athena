@@ -38,7 +38,7 @@ if ( Config::get('lanager/nav.showPages',true) ) {
   foreach($pageMenus as $title => $menu) {
     if (count($menu) == 1) {
       $navbar[] = [
-        'title' => $menu[0]['title'],
+        'title' => $title,
         'link' => $menu[0]['link'],
         ];
     }
