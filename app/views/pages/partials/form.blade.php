@@ -28,6 +28,15 @@
 	9
 )
 }}
+{{ ControlGroup::generate(
+  Form::label('menu','Menu'),
+  Form::text('menu',($title=="Create Page"?"Info":NUll),['placeholder' => 'Name of the menu to file this page under, blank for hidden, \'Info\' for default']),
+	Form::help('Sets whether this page is visible in menus and which menu it is in'),
+  2,
+  9
+  )
+}}
+
 
 {{ ControlGroup::generate(
 	Form::label('position', 'Position'),

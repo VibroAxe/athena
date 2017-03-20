@@ -3,7 +3,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset('apple-touch-icon-152x152-precomposed.png') }}">
-	<link rel="shortcut icon" href="{{ asset('favicon.ico')}}" />
+	<link rel="shortcut icon" href="{{ asset('favicon.png')}}" />
 
 	{{ HTML::style('css/bootstrap/bootstrap.css') }}
 	{{ HTML::style('css/lanager.css') }}

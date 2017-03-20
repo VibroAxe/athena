@@ -11,21 +11,21 @@ class PageService extends ResourceService {
 
 	public function store( $input )
 	{
-		Cache::forget('pageMenu');
+		Cache::forget('pageMenus');
 		
 		return parent::store( $input );
 	}
 
 	public function update( $id, $input )
 	{
-		Cache::forget('pageMenu');
+		Cache::forget('pageMenus');
 		
 		return parent::update( $id, $input );
 	}
 
 	public function destroy( $id )
 	{
-		Cache::forget('pageMenu');
+		Cache::forget('pageMenus');
 		
 		return parent::destroy( $id );
 	}
