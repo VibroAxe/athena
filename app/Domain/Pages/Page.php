@@ -4,11 +4,11 @@ use Zeropingheroes\Lanager\Domain\BaseModel;
 
 class Page extends BaseModel {
 
-	protected $fillable = [ 'parent_id', 'title', 'content', 'position', 'published' ];
+	protected $fillable = [ 'parent_id', 'title', 'content', 'position', 'menu', 'published' ];
 
-	protected $nullable = [ 'content', 'parent_id', 'position' ];
+	protected $nullable = [ 'content', 'parent_id', 'position', 'menu' ];
 
-	protected $optional = [ 'published' ];
+	protected $optional = [ 'published'];
 
 	/**
 	 * Pseudo-relation: A single page may optionally have a signle parent

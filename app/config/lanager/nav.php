@@ -13,13 +13,13 @@ return [
   | Note: Some menus are only rebuilt when editing a page, 
   |   edit a page after changing this setting to rebuild the cache
    */
-  'showAllPages'	=> false,
-  'showShouts' => false,
+  'showShouts' => true,
   'showEvents' => true,
   'showUsers' => true,
   'showGames' => true,
-  'showInfo' => true,
-  'showAllPages' => true,
+  'showProjector' => true,
+  'showPages' => true,
+  'showAllPages' => false,
   'showExtras' => true,
   'showExtrasAchievements' => true,
   'showExtrasUserAchievements' => true,
