@@ -6,7 +6,7 @@ class LanService extends ResourceService  {
 
 	protected $model = 'Zeropingheroes\Lanager\Domain\Lans\Lan';
 
-	protected $orderBy = [ 'start' ];
+	protected $orderBy = [ ['start', 'desc']];
 
 	protected $eagerLoad = [ 'userAchievements.achievement', 'userAchievements.user.state.application' ];
 
