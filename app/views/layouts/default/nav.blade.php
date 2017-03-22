@@ -1,6 +1,24 @@
 <?php
-
 $navbar = [];
+
+if ( Config::get('lanager/nav.showPages',true) ) {
+  //using $pageMenus
+  foreach($pageMenus as $title => $menu) {
+    if (count($menu) == 1) {
+      $navbar[] = [
+        'title' => $title,
+        'link' => $menu[0]['link'],
+        ];
+    }
+    else {
+      $navbar[] = [
+        $title,
+        $menu,
+      ];
+    }
+  }
+}
+
 if ( Config::get('lanager/nav.showShouts',false) ) {
   $navbar[] = [
     'title' => 'Shoutbox',
@@ -33,23 +51,6 @@ if ( Config::get('lanager/nav.showProjector',true) ) {
     ];
 }
 
-if ( Config::get('lanager/nav.showPages',true) ) {
-  //using $pageMenus
-  foreach($pageMenus as $title => $menu) {
-    if (count($menu) == 1) {
-      $navbar[] = [
-        'title' => $title,
-        'link' => $menu[0]['link'],
-        ];
-    }
-    else {
-      $navbar[] = [
-        $title,
-        $menu,
-      ];
-    }
-  }
-}
 if ( Config::get('lanager/nav.showExtras',true) ) {
   $extras = [];
   if ( Config::get('lanager/nav.showExtrasDashboard',true) ) {
