@@ -1,9 +1,16 @@
 @extends('layouts.default')
 @section('content')
-	@include('layouts.default.title')
 	@include('layouts.default.alerts')
 
-	<h4>{{{ $achievement->description }}}</h4>
+	<h1>
+		<img src="{{ $achievement->image}}" class="achievement-large">
+		{{$title}}
+	</h1>
+
+	<h4>
+	{{{ $achievement->description }}}
+	</h4>
+		
 
 	@if ( $achievement->userAchievements->count() )
 		<table class="table">

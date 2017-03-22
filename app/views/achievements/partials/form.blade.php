@@ -13,7 +13,7 @@
 	</label>
 	<div class="col-sm-9">
 		@if (isset($achievement->image))
-		<img src="{{ $achievement->image }}" class="achievement-image">
+		<img src="{{ $achievement->image }}" class="achievement-giant">
 		@endif
 		{{ Form::File("image_file") }}
 		<span class="help-block">Upload an image to act as the achievement icon. Image must be 128x128</span>
