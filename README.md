@@ -145,8 +145,11 @@ The installation guide is now split into several sections
 	3. Add index.php to the default file types
 	
 		`index index.html index.htm index.nginx-debian.html index.php;`
+
+	4. Enable larger file upload support (default is 1m)
+		`client_max_body_size 10m;`
   
-	4. Nginx doesn't support .htaccess files so we shall enable [pretty URLs](http://laravel.com/docs/4.2/installation#pretty-urls) here instead
+	5. Nginx doesn't support .htaccess files so we shall enable [pretty URLs](http://laravel.com/docs/4.2/installation#pretty-urls) here instead
 
 		```
 		location / {
@@ -154,7 +157,7 @@ The installation guide is now split into several sections
 		}
 		```
 		
-	5. Enable php script processing
+	6. Enable php script processing
 
 		```
 		# pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000 
@@ -169,7 +172,7 @@ The installation guide is now split into several sections
 		}
 		```
 		
-	6. Lanagers document root is an apache folder, we should deny access to .htaccess files
+	7. Lanagers document root is an apache folder, we should deny access to .htaccess files
 
 		```
 		location ~ /\.ht {
