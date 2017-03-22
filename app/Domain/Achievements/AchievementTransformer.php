@@ -14,6 +14,7 @@ class AchievementTransformer extends TransformerAbstract {
 		return [
 			'id'			=> (int) $achievement->id,
 			'name'			=> $achievement->name,
+			'image'			=> $achievement->image,
 			'description'	=> $achievement->description,
 			'links'			=> [
 				[
