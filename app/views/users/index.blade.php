@@ -35,7 +35,8 @@
 						@endif
 					</td>
 					<td>
-						@include('plural', ['singular' => 'award', 'collection' => $user->userAchievements] )
+						@include('plural', ['singular' => 'achievement', 'collection' => $user->userAchievements] )
+						@include('user-achievements.partials.ribbon', ['userAchievements' => $user->userAchievements->take(6), 'size'=>'small'])
 					</td>
 					@if ( Authority::can('delete', 'users') OR Authority::can('manage', 'user-roles') )
 						<td class="text-center">
