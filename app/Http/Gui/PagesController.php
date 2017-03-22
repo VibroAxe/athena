@@ -3,6 +3,8 @@
 use Zeropingheroes\Lanager\Domain\Pages\PageService;
 use View;
 use Redirect;
+use URL;
+use Request;
 
 class PagesController extends ResourceServiceController {
 
@@ -54,9 +56,19 @@ class PagesController extends ResourceServiceController {
 	{
 		$page = $this->service->single( $id );
 
+		//is the pretty url correct?
+		$uri = Request::url();
+		$correctUri = URL::route('pages.show', ['id' => $page->id, 'prettyname' => str_replace([" "],["-"],$page->title)]);
+
+		if ($uri != $correctUri) {
+			return Redirect::route('pages.show', ['id' => $page->id, 'prettyname' => str_replace([" "],["-"],$page->title)]);
+		} else {
+
+
 		return View::make( 'pages.show' )
 					->with( 'title', $page->title )
 					->with( 'page', $page );
+		}
 	}
 
 	/**

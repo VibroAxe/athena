@@ -11,7 +11,7 @@
 		<?php $children = $page->children()->orderBy(DB::raw('ISNULL(position)'))->get(); ?>
 		<ul>
 			@foreach($children as $child)
-				<li>{{ link_to_route('pages.show',$child->title, $child->id) }}</li>
+				<li>{{ link_to_route('pages.show',$child->title, ['id' => $child->id, 'prettyname' => str_replace([" "],["-"],$child->title)]) }}</li>
 			@endforeach
 		</ul>
 	@endif

@@ -10,7 +10,7 @@ View::composer('layouts.default.nav', function($view)
 	// Info (cached until a page is edited)
 	$pageMenus = Cache::rememberForever('pageMenus', function()
 	{
-		$pages = Zeropingheroes\Lanager\Domain\Pages\Page::whereNull('parent_id')->where('menu','!=','')->where('published', true)->orderBy(DB::raw('ISNULL(position)'))->get();
+		$pages = Zeropingheroes\Lanager\Domain\Pages\Page::whereNull('parent_id')->where('menu','!=','')->where('published', true)->orderBy(DB::raw('ISNULL(position)'))->orderBy('position')->get();
 		if ( $pages->count() )
     {
 			foreach($pages as $page)
@@ -18,7 +18,7 @@ View::composer('layouts.default.nav', function($view)
 				$menuItems[$page['menu']][] =
 				[
 					'title' => $page['title'],
-					'link' => URL::route('pages.show', $page->id),
+					'link' => URL::route('pages.show', ['id' => $page->id, 'prettyname' => str_replace([" "],["-"],$page->title)]),
 				];
       }
       foreach($menuItems as &$menu) 
