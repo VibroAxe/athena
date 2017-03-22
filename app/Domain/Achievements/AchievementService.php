@@ -68,7 +68,7 @@ class AchievementService extends ResourceService {
 	{
 		$this->setUser();
 	
-		$model = $base->newModelInstance();
+		$model = $this->newModelInstance();
 	
 		$model = $model->fill( $input );
 
