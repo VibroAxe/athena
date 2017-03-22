@@ -36,7 +36,7 @@
 					</td>
 					<td>
 						@include('plural', ['singular' => 'achievement', 'collection' => $user->userAchievements] )
-						@include('user-achievements.partials.ribbon', ['userAchievements' => $user->userAchievements->take(6), 'size'=>'small'])
+						@include('user-achievements.partials.ribbon', ['userAchievements' => $user->userAchievements()->orderBy('lan_id','desc')->orderBy('created_at','desc')->get()->take(6), 'size'=>'small'])
 					</td>
 					@if ( Authority::can('delete', 'users') OR Authority::can('manage', 'user-roles') )
 						<td class="text-center">

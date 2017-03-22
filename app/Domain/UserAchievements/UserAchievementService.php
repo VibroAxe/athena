@@ -6,7 +6,7 @@ class UserAchievementService extends ResourceService {
 
 	protected $model = 'Zeropingheroes\Lanager\Domain\UserAchievements\UserAchievement';
 
-	protected $orderBy = [ [ 'lan_id', 'desc' ], [ 'user_id', 'desc' ] ];
+	protected $orderBy = [ [ 'lan_id', 'desc' ], [ 'user_id', 'desc' ], ['created_at', 'desc'] ];
 
 	protected $eagerLoad = [ 'achievement', 'lan', 'user.state.application' ];
 

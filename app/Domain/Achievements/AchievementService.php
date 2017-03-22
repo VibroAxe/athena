@@ -115,7 +115,11 @@ class AchievementService extends ResourceService {
 					$newname = $this->generateUniqueName(public_path()."/uploads/achievements/","",Input::file('image_file')->getClientOriginalExtension());
 					if ($path = Input::file('image_file')->move(public_path()."/uploads/achievements/",$newname)) {
 						$model->image = str_replace(public_path(),"",$path);
-						unlink(public_path().$orig);
+						if ($orig != "") {
+							try {
+								unlink(public_path().$orig);
+							} catch (Exception $ex) {}
+						}
 					} else {
 						unlink(public_path()."/uploads/achievements/".$newname);
 					}

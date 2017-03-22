@@ -92,6 +92,10 @@ img.avatar-offline {
    ACHIEVEMENTS
    -------------------------------------------------------------------
 */
+a.achievement-icon {
+	text-decoration: none !important;
+}
+
 img.achievement {
 	width: 32px;
 	height: 32px;
