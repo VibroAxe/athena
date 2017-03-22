@@ -3,7 +3,9 @@
    -------------------------------------------------------------------
 */
 body {
-	background-image: url('../img/bg-html.jpg');
+	background-image: url('../img/bg-html-tiles.png');
+	background-repeat: repeat;
+	background-attachment: fixed;
 }
 
 div.container.content {
@@ -84,6 +86,27 @@ img.avatar-online {
 }
 img.avatar-offline {
 	border-color: #333;
+}
+
+/* -------------------------------------------------------------------
+   ACHIEVEMENTS
+   -------------------------------------------------------------------
+*/
+img.achievement {
+	width: 32px;
+	height: 32px;
+}
+img.achievement-large {
+	width: 64px;
+	height: 64px;
+}
+img.achievement-giant {
+	width: 128px;
+	height: 128px;
+}
+img.achievement-small {
+	width: 16px;
+	height: 16px;
 }
 
 /* -------------------------------------------------------------------
@@ -192,7 +215,7 @@ form.shout-create div.input-group span.input-group-btn {
 }
 
 span.shout-pin {
-	color: #0f0;
+	color: #09f;
 	line-height: 68px;
 	font-size: 1.5em
 }
@@ -265,7 +288,7 @@ div#timetable .timeline { /* green timeline */
 	position: absolute;
 	background: transparent;
 	border: none;
-	border-top: 2px solid #0f0;
+	border-top: 2px solid #09f;
 	width: 100%;
 	z-index: 999;
 }

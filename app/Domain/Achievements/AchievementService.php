@@ -1,6 +1,7 @@
 <?php namespace Zeropingheroes\Lanager\Domain\Achievements;
 
 use Zeropingheroes\Lanager\Domain\ResourceService;
+use Input;
 
 class AchievementService extends ResourceService {
 
@@ -34,6 +35,7 @@ class AchievementService extends ResourceService {
 	{
 		return [
 			'name'			=> [ 'required', 'max:255', 'unique:achievements,name' ],
+			'image'			=> [ 'required' ],
 			'description'	=> [ 'required', 'max:255' ],
 		];
 	}
@@ -53,5 +55,91 @@ class AchievementService extends ResourceService {
 		// Todo: re-add visible field to achievements table
 		//if ( ! $this->user->hasRole( 'Achievements Admin' ) )
 			//$this->addFilter( 'where', 'visible', true );
+	}
+
+	//override ResourceService' store and update methods to handle image file uploading
+
+	/**
+	 * Store a new resource item
+	 * @param  array $input Raw user input
+	 * @return boolean
+	 */
+	public function store( $input )
+	{
+		$this->setUser();
+	
+		$model = $base->newModelInstance();
+	
+		$model = $model->fill( $input );
+
+		if ( Input::hasFile('image_file') ) {
+			if (Input::file('image_file')->isValid()) {
+				if (true) {
+					//Todo: Check if image file is image / correct size
+					$newname = $this->generateUniqueName(public_path()."/uploads/achievements/","",Input::file('image_file')->getClientOriginalExtension());
+					if ($path = Input::file('image_file')->move(public_path()."/uploads/achievements/",$newname)) {
+						$model->image = str_replace(public_path(),"",$path);
+					} else {
+						unlink(public_path()."/uploads/achievements/".$newname);
+					}
+				}
+			}
+		}
+	
+		$this->runChecks( 'store', $model->toArray() );
+	
+		$model->save();
+	
+		return $model->toArray();
+	}
+
+	/**
+	 * Update an existing resource item by ID
+	 * @param  integer $id    Item's ID
+	 * @param  array $input   Raw user input
+	 * @return boolean
+	 */
+	public function update( $id, $input )
+	{
+		$this->setUser();
+	
+		$model = $this->get( $this->newModelInstance(), $id );
+	
+		$model = $model->fill( $input );
+
+		if ( Input::hasFile('image_file') ) {
+			if (Input::file('image_file')->isValid()) {
+				if (true) {
+					//Todo: Check if image file is image / correct size
+					$orig = $model->image;
+					$newname = $this->generateUniqueName(public_path()."/uploads/achievements/","",Input::file('image_file')->getClientOriginalExtension());
+					if ($path = Input::file('image_file')->move(public_path()."/uploads/achievements/",$newname)) {
+						$model->image = str_replace(public_path(),"",$path);
+						unlink(public_path().$orig);
+					} else {
+						unlink(public_path()."/uploads/achievements/".$newname);
+					}
+				}
+			}
+		}
+	
+		$this->runChecks( 'update', $model->toArray(), $model->getOriginal() );
+	
+		$model->save();
+
+		return $model->toArray();
+	}	
+
+	private function generateUniqueName($dir, $prefix, $extension) {
+		$name = $prefix.md5(time().rand());
+	   	if ($extension != "")
+		   $name = $name.".".$extension;
+		if (!file_exists($dir."/".$name)) {
+			$handle = fopen($dir.'/'.$name, "w");
+			fclose($handle);
+			return $name;
+		} else {
+			return $this->generateUniqueName($dir, $prefix, $extension);
+		}
 	}
 }

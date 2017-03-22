@@ -8,7 +8,7 @@ class Achievement extends BaseModel {
 	 * Fields that can be mass assigned
 	 * @var array
 	 */
-	protected $fillable = ['name', 'description'];
+	protected $fillable = ['name', 'image', 'description'];
 
 	/**
 	 * A single achievement has many user achievements (aka awards)

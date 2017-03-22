@@ -51,7 +51,7 @@ abstract class ResourceService {
 		$this->user = new EloquentServiceUserAdapter( Auth::user() );
 	}
 
-	private function newModelInstance()
+	protected function newModelInstance()
 	{
 		return ( new $this->model );
 	}
