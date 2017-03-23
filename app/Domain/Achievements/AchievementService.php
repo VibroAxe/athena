@@ -2,6 +2,8 @@
 
 use Zeropingheroes\Lanager\Domain\ResourceService;
 use Input;
+//use Zeropingheros\Lanager\Domain\ValidationException;
+use Zeropingheroes\Lanager\Domain\ValidationException;
 
 class AchievementService extends ResourceService {
 
@@ -74,14 +76,19 @@ class AchievementService extends ResourceService {
 
 		if ( Input::hasFile('image_file') ) {
 			if (Input::file('image_file')->isValid()) {
-				if (true) {
+				$imageInfo = getimagesize(Input::file('image_file'));
+				if ((substr($imageInfo['mime'],0,5) === "image") && ($imageInfo[0] <= 128) && ($imageInfo[1] <= 128)) {
 					//Todo: Check if image file is image / correct size
 					$newname = $this->generateUniqueName(public_path()."/uploads/achievements/","",Input::file('image_file')->getClientOriginalExtension());
 					if ($path = Input::file('image_file')->move(public_path()."/uploads/achievements/",$newname)) {
 						$model->image = str_replace(public_path(),"",$path);
 					} else {
 						unlink(public_path()."/uploads/achievements/".$newname);
+						throw new ValidationException("Validation Error","Achievement Image was invalid");
 					}
+				} else {
+					//image wrong size
+					throw new ValidationException("Validation Error","Achievement Image was invalid (Not an image or incorrect size)");
 				}
 			}
 		}
@@ -109,7 +116,8 @@ class AchievementService extends ResourceService {
 
 		if ( Input::hasFile('image_file') ) {
 			if (Input::file('image_file')->isValid()) {
-				if (true) {
+				$imageInfo = getimagesize(Input::file('image_file'));
+				if ((substr($imageInfo['mime'],0,5) === "image") && ($imageInfo[0] <= 128) && ($imageInfo[1] <= 128)) {
 					//Todo: Check if image file is image / correct size
 					$orig = $model->image;
 					$newname = $this->generateUniqueName(public_path()."/uploads/achievements/","",Input::file('image_file')->getClientOriginalExtension());
@@ -122,7 +130,12 @@ class AchievementService extends ResourceService {
 						}
 					} else {
 						unlink(public_path()."/uploads/achievements/".$newname);
+						//failed to update
+						throw new ValidationException("Validation Error","Achievement Image was invalid");
 					}
+				} else {
+					//image wrong size
+					throw new ValidationException("Validation Error","Achievement Image was invalid (Not an image or incorrect size)");
 				}
 			}
 		}
