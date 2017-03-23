@@ -1,6 +1,5 @@
 @extends('layouts.projector')
 @section('content')
-
   <div class="container">
     <div class="row bgspacer"></div>
     <div class="row">

@@ -18,7 +18,7 @@
 			<tbody>
 			@foreach( $pages as $page )
 				<tr>
-					<td>{{ link_to_route('pages.show', $page->title, [ 'id' => $page->id, 'name' => str_replace([" "],["-"],$page->title)]) }}</td>
+					<td>{{ link_to_route('pages.show', $page->title, [ 'id' => $page->id, 'prettyname' => str_replace([" "],["-"],$page->title)]) }}</td>
 					<td>{{ $page->updated_at->diffForHumans() }}</td>
 					@if ( Authority::can('manage', 'pages') )
 						<td class="text-center">
