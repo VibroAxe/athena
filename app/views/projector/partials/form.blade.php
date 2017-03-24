@@ -10,7 +10,7 @@
 	$contentactive="";
 	$imgactive="";
 	$urlactive="";
-	if ($slide->url != "") {
+	if (isset($slide) && $slide != null && $slide->url != "") {
 		if (substr($slide->url, 0, 1) === "/") 	{
 			$length = strlen($slide->url);
 			if (in_array(substr($slide->url, $length-4,$length) , [ ".png", ".jpg", ".gif", "jpeg", "gifv" ])) {
@@ -65,7 +65,7 @@
 					<div class="col-sm-11">
 						<div id="imgbox">
 						<?php
-						if ($slide->url != "") {
+						if (isset($slide) && $slide != null && $slide->url != "") {
 							if (substr($slide->url, 0, 1) === "/") 	{
 								$length = strlen($slide->url);
 								if (in_array(substr($slide->url, $length-4,$length) , [ ".png", ".jpg", ".gif", "jpeg", "gifv" ])) {
