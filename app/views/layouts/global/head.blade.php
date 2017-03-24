@@ -1,5 +1,5 @@
 <head>
-	<title>{{{ $title }}} :: {{ Config::get('lanager/config.title',"Lanager") }}</title>
+	<title>{{ Config::get('lanager/config.title',"Athena") }} :: {{{ $title }}} </title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset('apple-touch-icon-152x152-precomposed.png') }}">
