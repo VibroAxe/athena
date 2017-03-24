@@ -112,6 +112,11 @@ Route::group(
 function()
 {
 	Route::api(['version' => 'v1'], function () {
+		if (Config::get("lanager/api.origins",null) != null) {
+		header("Access-Control-Allow-Origin: ".Config::get("lanager/api.origins","*"));
+		header("Access-Control-Allow-Methods: ".Config::get("lanager/api.methods","GET, OPTIONS"));
+		}
+
 		Route::resource('achievements',			'AchievementsController',		['except' => ['create', 'edit'] ]);
 		Route::resource('user-achievements',	'UserAchievementsController',	['except' => ['create', 'edit'] ]);
 		Route::resource('events',				'EventsController',				['except' => ['create', 'edit'] ]);
@@ -124,8 +129,8 @@ function()
 		Route::resource('user-roles',			'UserRolesController',			['except' => ['create', 'edit', 'update'] ]);
 		Route::resource('users',				'UsersController',				['except' => ['create', 'store', 'edit', 'update'] ]);
 		Route::resource('application-usage',	'ApplicationUsageController',	['except' => ['create', 'show', 'store', 'edit', 'update', 'destroy'] ]);
-    Route::resource('logs',					'LogsController',				['except' => ['create', 'store', 'edit', 'update', 'destroy'] ]);
-    Route::resource('projector',     'ProjectorController',      ['except' => ['create', 'edit'] ]);
+	    Route::resource('logs',					'LogsController',				['except' => ['create', 'store', 'edit', 'update', 'destroy'] ]);
+    	Route::resource('projector',     'ProjectorController',      ['except' => ['create', 'edit'] ]);
 		
 		// List of endpoints
 		Route::get('/', ['as' => 'api.index', function () {

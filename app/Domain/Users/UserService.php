@@ -2,6 +2,7 @@
 
 use Zeropingheroes\Lanager\Domain\ResourceService;
 use Zeropingheroes\Lanager\Domain\ServiceFilters\FilterableByTimestamps;
+use Auth;
 
 class UserService extends ResourceService {
 
@@ -45,5 +46,15 @@ class UserService extends ResourceService {
 		if ( ! $this->user->hasRole( 'Super Admin' ) )
 			$this->addFilter('where', 'visible', true );
 	}
+
+	public function single ($id) {
+		if ($id == 'me')
+			if (Auth::check())	
+				$id=Auth::user()->id; 
+			else
+				$id=-1;
+		return parent::single($id);
+	}
+
 
 }
