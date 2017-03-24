@@ -1,5 +1,7 @@
 <?php
 
+//URL::forceSchema('https');
+
 Route::group(
 [
 	'namespace' => 'Zeropingheroes\Lanager\Http\Gui',
@@ -113,8 +115,16 @@ function()
 {
 	Route::api(['version' => 'v1'], function () {
 		if (Config::get("lanager/api.origins",null) != null) {
-		header("Access-Control-Allow-Origin: ".Config::get("lanager/api.origins","*"));
-		header("Access-Control-Allow-Methods: ".Config::get("lanager/api.methods","GET, OPTIONS"));
+			if  (count(Config::get("lanager/api.origins") > 1)) {
+				foreach(Config::get("lanager/api.origins") as $origin) {
+					header("Access-Control-Allow-Origin: ".$origin);
+				}
+			}
+			else {
+				header("Access-Control-Allow-Origin: ".Config::get("lanager/api.origins","*"));
+			}
+			header("Access-Control-Allow-Methods: ".Config::get("lanager/api.methods","GET, OPTIONS"));
+			header("Access-Control-Allow-Credentials: ".Config::get("lanager/api.credentials",'false'));
 		}
 
 		Route::resource('achievements',			'AchievementsController',		['except' => ['create', 'edit'] ]);
