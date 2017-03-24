@@ -30,10 +30,10 @@ body.fader {
 }
 iframe {
     display: block;       /* iframes are inline by default */
-
+	position: absolute;
     border: none;         /* Reset default border */
-    width: 100%;
-    height: 100%;
+	width: 1920px;		/* Render at 1920x1080, scale will happen later */
+    height: 1080px;
     overflow-x: hidden;
     overflow-y: hidden;
 }
@@ -62,7 +62,7 @@ div.fader {
 
     border: none;         /* Reset default border */
     width: 100%;
-    height: 100%;
+	height: 100%;
 }
 </style>
     @yield('content')

@@ -58,4 +58,16 @@ class Slide extends BaseModel {
 		}
 	}
 
+	public function isActive() {
+		if (($this->startdate == null) && ($this->enddate == null))
+			//slide isn't date controlled
+			return $this->published;
+		if (($this->startdate == null || $this->startdate <= date('Y-m-d H:i:s')) && ($this->enddate == null || $this->enddate >= date('Y-m-d H:i:s')))
+			//slide is live
+			return $this->published;
+		else
+			return 0;
+		
+	}
+
 }

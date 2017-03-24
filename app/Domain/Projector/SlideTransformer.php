@@ -14,9 +14,12 @@ class SlideTransformer extends TransformerAbstract {
 		return [
 			'id'			=> (int) $slide->id,
 			'title'			=> $slide->title,
-      'timespan'  => $slide->timespan,
-      'published' => $slide->published,
+			'timespan'  => $slide->timespan,
+			'published' => $slide->published,
 			'url'			=> (! is_null($slide->url) ? $slide->url : (url().'/projector/'. $slide->id)),
+			'startdate' => $slide->startdate,
+			'enddate' => $slide->enddate,
+			'isactive' => $slide->isActive(),
 			];
 	}
 }
