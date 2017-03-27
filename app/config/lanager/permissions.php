@@ -17,11 +17,11 @@ return [
 		// Alias all REST verbs to their CRUD counterparts
 		$authority->addAlias('create',	['create', 'store']);
 		$authority->addAlias('read', 	['read', 'index', 'show']);
-		$authority->addAlias('update',	['update', 'edit']);
+		$authority->addAlias('update',	['update', 'edit', 'toggle']);
 		$authority->addAlias('delete',	['delete', 'destroy']);
 
 		// Create "do everything" alias
-		$authority->addAlias('manage',	['create', 'store', 'read', 'index', 'show', 'update', 'edit', 'delete', 'destroy']);
+		$authority->addAlias('manage',	['create', 'store', 'read', 'index', 'show', 'update', 'edit', 'delete', 'destroy', 'toggle']);
 
 		/*
 		|--------------------------------------------------------------------------
@@ -43,8 +43,11 @@ return [
 		$authority->allow('read', 'application-usage');
 		$authority->allow('read', 'dashboard');
 		$authority->allow('read', 'api');
+	    $authority->allow('read', 'projector');
 		$authority->allow('create', 'sessions');
-		$authority->allow('delete', 'sessions');
+    	$authority->allow('delete', 'sessions');
+		$authority->allow('read', 'links');
+		$authority->allow('showbyshorttitle', 'links');
 
 		// Check if a user is logged in
 		$self = $authority->getCurrentUser();
@@ -100,7 +103,16 @@ return [
 				$authority->allow('manage', 'events');
 				$authority->allow('manage', 'event-types');
 				$authority->allow('manage', 'events.signups');
-			}
+      }
+
+      if ($self->hasRole('Projector Admin') )
+      {
+        $authority->allow('manage','projector');
+	  }
+
+	  if ( $self->hasRole('Links Admin') ) {
+		  $authority->allow('manage','links');
+		}
 
 			if ( $self->hasRole('Admin') )
 			{
