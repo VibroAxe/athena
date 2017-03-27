@@ -4,9 +4,12 @@
 	@include('layouts.default.title')
 	@endif
 	@include('layouts.default.alerts')
-
+	@if (false)
 	{{ Purifier::clean(Markdown::string($page->content), 'markdown') }}
+	@else 
+	{{ Markdown::string($page->content) }}
 
+	@endif
 	@if (!empty($page->children))
 		<?php $children = $page->children()->orderBy(DB::raw('ISNULL(position)'))->get(); ?>
 		<ul>
