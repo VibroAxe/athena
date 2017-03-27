@@ -18,6 +18,9 @@ class CreateLinksTable extends Migration {
 
 			$table->string('title');
 
+			$table->string('shorttitle')
+				->unique();
+
 			$table->string('url');
 
 			$table->integer('published')
