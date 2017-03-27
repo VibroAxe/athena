@@ -20,7 +20,11 @@
       @if ( Authority::can('manage', 'projector' ) )
         <li><a href="{{ route('projector.create') }}">{{ Icon::picture() }} Create Projector Slide</a></li>
         <li><a href="{{ route('projector.manage') }}">{{ Icon::picture() }} Manage Projector Slides</a></li>
-      @endif
+		@endif
+		@if ( Authority::can('manage', 'links' ) )
+        <li><a href="{{ route('links.create') }}">{{ Icon::console() }} Create Shortened Link</a></li>
+        <li><a href="{{ route('links.show') }}">{{ Icon::console() }} Manage Links</a></li>
+		@endif
 			@if ( Authority::can('manage', 'pages') )
         <li><a href="{{ route('pages.create') }}">{{ Icon::file() }} Create Page</a></li>
         <li><a href="{{ route('pages.index') }}">{{Icon::file() }} Manage Pages</a></li>
