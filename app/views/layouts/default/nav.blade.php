@@ -44,15 +44,16 @@ if ( Config::get('lanager/nav.showGames',true) ) {
   ];
 }
 
-if ( Config::get('lanager/nav.showProjector',true) ) {
-  $navbar[] = [
-    'title' => 'Projector',
-    'link' => URL::route('projector.index'),
-    ];
-}
 
 if ( Config::get('lanager/nav.showExtras',true) ) {
   $extras = [];
+	if ( Config::get('lanager/nav.showProjector',true) ) {
+		$extras[] = [
+			'title' => 'Athena Portal',
+			'link' => URL::route('projector.index'),
+			'linkAttributes' => ['target' => '_new'],
+		];
+	}
   if ( Config::get('lanager/nav.showExtrasDashboard',true) ) {
     $extras[] = [
       'title' => 'Live Dashboard',
@@ -167,7 +168,7 @@ $navbar[] =
 	],
 ];
  */
-echo Navbar::create(Navbar::NAVBAR_TOP)->withBrand('<img src="' . asset('img/logo.png') .'" width="82" height="29" alt="LANager Logo">')
+echo Navbar::create(Navbar::NAVBAR_TOP)->withBrand('<img src="' . asset('img/logo.png') .'" width="140" height="35" alt="LANager Logo">')
 			->withContent(
 				Navigation::links($navbar)
 			)
