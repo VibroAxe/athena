@@ -23,8 +23,7 @@ class PagesController extends ResourceServiceController {
 	 */
 	public function index()
 	{
-//    $pages = $this->service->all()->where('hidden','false');
-    $pages = $this->service->all();
+    	$pages = $this->service->all();
 
 		return View::make( 'pages.index' )
 					->with( 'title', 'Info' )

@@ -97,9 +97,18 @@ function()
 	| Projector
 	|--------------------------------------------------------------------------
 	*/
-  Route::get('projector/manage', ['as' => 'projector.manage','uses' => 'ProjectorController@manage']);
-  Route::get('projector/{id}/toggle', ['as' => 'projector.toggle','uses' => 'ProjectorController@toggle']);
-  Route::resource('projector', 'ProjectorController');
+	Route::get('projector/manage', ['as' => 'projector.manage','uses' => 'ProjectorController@manage']);
+  	Route::get('projector/{id}/toggle', ['as' => 'projector.toggle','uses' => 'ProjectorController@toggle']);
+  	Route::resource('projector', 'ProjectorController');
+	/*
+	|--------------------------------------------------------------------------
+	| Links
+	|--------------------------------------------------------------------------
+	 */
+	Route::get('links/{id}/toggle', ['as' => 'links.toggle','uses' => 'LinksController@toggle']);
+	Route::resource('links', 'LinksController');
+
+	Route::get('/{name}', ['as' => 'links.showbyshorttitle','uses' => 'LinksController@showByShortTitle']);
 });
 
 /*
