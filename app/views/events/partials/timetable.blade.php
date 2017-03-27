@@ -5,7 +5,7 @@
 
 		$.ajax({
 			dataType: "json",
-			url: "http://" + location.host + "/api/events",
+			url: location.protocol + "//" + location.host + "/api/events",
 			//url: "{{-- URL::route('api.events.index') --}}", // issue with dingo/api/ (see issue #307)
 			success: function(response) {
 				// translate data into format that fullCalendar can use
