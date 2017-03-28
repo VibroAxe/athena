@@ -5,10 +5,10 @@
 
 	<div class="row">
 		<div class="col-lg-8 col-centered">
-			<p>Sign in to the LANager with your Steam ID</p>
+			<p>Sign in to Athena with your Steam ID</p>
 		</div>
 		<div class="col-lg-8 col-centered">
-			<a href="{{ $steamAuthUrl }}" title="Click here to sign into the LANager using your Steam ID">
+			<a href="{{ $steamAuthUrl }}" title="Click here to sign in to Athena using your Steam ID">
 				<img src="{{ asset('/img/sits_large_noborder.png') }}" alt="Sign in through Steam Logo">
 			</a>
 		</div>

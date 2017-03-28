@@ -33,11 +33,13 @@
 				</a>
 			</li>
 			@if ( Auth::check() AND $user->id == Auth::user()->id )
+				@if (Config::Get('lanager/nav.showApi',false))
 				<li role="presentation" class="<?php if (Input::get('tab') == 'api') echo 'active'; ?>">
 					<a href="{{ route('users.show', ['user' => $user->id, 'tab' => 'api'] ) }}">
 						API
 					</a>
 				</li>
+				@endif
 			@endif
 		</ul>
 	</div>

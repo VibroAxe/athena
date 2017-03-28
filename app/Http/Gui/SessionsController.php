@@ -36,6 +36,8 @@ class SessionsController extends Controller {
 			return $openId->authUrl();
 		});
 
+		return Redirect::to($steamAuthUrl);
+
 		return View::make('sessions.create')
 						->with('title','Log In')
 						->with('steamAuthUrl', $steamAuthUrl);
