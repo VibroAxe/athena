@@ -92,6 +92,18 @@ img.avatar-offline {
    SLIDES
    -------------------------------------------------------------------
 */
+img.projector-logo {
+	max-width: 128px;
+	max-height: 128px;
+	position:absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 96;
+}
+
+
+
+
 img.slidepreview {
 	max-width: 847px;
 	max-height: 476px;
