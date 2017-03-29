@@ -103,7 +103,7 @@ class LinksController extends ResourceServiceController {
 	 */
 	public function edit( $id )
 	{
-		return View::make( 'link.edit' )
+		return View::make( 'links.edit' )
 					->with( 'title', 'Edit Link' )
 					->with( 'link', $this->service->single( $id ) );
 	}
