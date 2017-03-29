@@ -79,11 +79,11 @@ class AchievementService extends ResourceService {
 				$imageInfo = getimagesize(Input::file('image_file'));
 				if ((substr($imageInfo['mime'],0,5) === "image") && ($imageInfo[0] <= 128) && ($imageInfo[1] <= 128)) {
 					//Todo: Check if image file is image / correct size
-					$newname = $this->generateUniqueName(public_path()."/uploads/achievements/","",Input::file('image_file')->getClientOriginalExtension());
-					if ($path = Input::file('image_file')->move(public_path()."/uploads/achievements/",$newname)) {
+					$newname = $this->generateUniqueName(public_path()."/upload/achievements/","",Input::file('image_file')->getClientOriginalExtension());
+					if ($path = Input::file('image_file')->move(public_path()."/upload/achievements/",$newname)) {
 						$model->image = str_replace(public_path(),"",$path);
 					} else {
-						unlink(public_path()."/uploads/achievements/".$newname);
+						unlink(public_path()."/upload/achievements/".$newname);
 						throw new ValidationException("Validation Error","Achievement Image was invalid");
 					}
 				} else {
@@ -120,8 +120,8 @@ class AchievementService extends ResourceService {
 				if ((substr($imageInfo['mime'],0,5) === "image") && ($imageInfo[0] <= 128) && ($imageInfo[1] <= 128)) {
 					//Todo: Check if image file is image / correct size
 					$orig = $model->image;
-					$newname = $this->generateUniqueName(public_path()."/uploads/achievements/","",Input::file('image_file')->getClientOriginalExtension());
-					if ($path = Input::file('image_file')->move(public_path()."/uploads/achievements/",$newname)) {
+					$newname = $this->generateUniqueName(public_path()."/upload/achievements/","",Input::file('image_file')->getClientOriginalExtension());
+					if ($path = Input::file('image_file')->move(public_path()."/upload/achievements/",$newname)) {
 						$model->image = str_replace(public_path(),"",$path);
 						if ($orig != "") {
 							try {

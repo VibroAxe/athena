@@ -22,11 +22,11 @@ class ProjectorService extends ResourceService {
 			if (Input::file('image_file')->isValid()) {
 				if (true) {
 					//Todo: Check if image file is image / correct size
-					$newname = $this->generateUniqueName(public_path()."/uploads/slides/","",Input::file('image_file')->getClientOriginalExtension());
-					if ($path = Input::file('image_file')->move(public_path()."/uploads/slides/",$newname)) {
+					$newname = $this->generateUniqueName(public_path()."/upload/slides/","",Input::file('image_file')->getClientOriginalExtension());
+					if ($path = Input::file('image_file')->move(public_path()."/upload/slides/",$newname)) {
 						$model->url = str_replace(public_path(),"",$path);
 					} else {
-						unlink(public_path()."/uploads/slides/".$newname);
+						unlink(public_path()."/upload/slides/".$newname);
 					}
 				}
 			}
@@ -51,11 +51,11 @@ class ProjectorService extends ResourceService {
 			if (Input::file('image_file')->isValid()) {
 				if (true) {
 					//Todo: Check if image file is image / correct size
-					$newname = $this->generateUniqueName(public_path()."/uploads/slides/","",Input::file('image_file')->getClientOriginalExtension());
-					if ($path = Input::file('image_file')->move(public_path()."/uploads/slides/",$newname)) {
+					$newname = $this->generateUniqueName(public_path()."/upload/slides/","",Input::file('image_file')->getClientOriginalExtension());
+					if ($path = Input::file('image_file')->move(public_path()."/upload/slides/",$newname)) {
 						$model->url = str_replace(public_path(),"",$path);
 					} else {
-						unlink(public_path()."/uploads/slides/".$newname);
+						unlink(public_path()."/upload/slides/".$newname);
 					}
 				}
 			}
