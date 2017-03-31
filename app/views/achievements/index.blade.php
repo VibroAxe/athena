@@ -18,7 +18,7 @@
 			<tbody>
 			@foreach( $achievements as $achievement )
 				<tr>
-					<td>{{ link_to_route('achievements.show', $achievement->name, $achievement->id) }}</td>
+					<td><a href="/achievements/{{ $achievement->id }}" ><img src="{{ $achievement->image }}" class="achievement">{{ $achievement->name }}<a/></td>
 					<td>{{ $achievement->description }}</td>
 					<td>
 						@include('plural', ['singular' => 'user', 'collection' => $achievement->userAchievements ])

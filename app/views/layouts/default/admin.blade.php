@@ -17,20 +17,24 @@
 			@if ( Authority::can('manage', 'event-types') )
 				<li><a href="{{ route('event-types.index') }}">{{ Icon::calendar() }} Manage Event Types</a></li>
       @endif
-      @if ( Authority::can('manage', 'projector' ) )
-        <li><a href="{{ route('projector.create') }}">{{ Icon::picture() }} Create Projector Slide</a></li>
-        <li><a href="{{ route('projector.manage') }}">{{ Icon::picture() }} Manage Projector Slides</a></li>
-		@endif
-		@if ( Authority::can('create', 'links' ) )
-        <li><a href="{{ route('links.create') }}">{{ Icon::console() }} Create Shortened Link</a></li>
-		@endif
-		@if ( Authority::can('update', 'links' ) )
-        <li><a href="{{ route('links.show') }}">{{ Icon::console() }} Manage Links</a></li>
-		@endif
 			@if ( Authority::can('manage', 'pages') )
         <li><a href="{{ route('pages.create') }}">{{ Icon::file() }} Create Page</a></li>
         <li><a href="{{ route('pages.index') }}">{{Icon::file() }} Manage Pages</a></li>
 			@endif
+      @if ( Authority::can('manage', 'projector' ) )
+        <li><a href="{{ route('projector.create') }}">{{ Icon::picture() }} Create Projector Slide</a></li>
+        <li><a href="{{ route('projector.manage') }}">{{ Icon::picture() }} Manage Projector Slides</a></li>
+		@endif
+			@if ( Authority::can('manage', 'uploads') )
+        <li><a href="{{ route('uploads.create') }}">{{ Icon::file() }} Upload File</a></li>
+        <li><a href="{{ route('uploads.index') }}">{{Icon::file() }} Manage Uploads</a></li>
+			@endif
+		@if ( Authority::can('create', 'links' ) )
+        <li><a href="{{ route('links.create') }}">{{ Icon::console() }} Create Shortened Link</a></li>
+		@endif
+		@if ( Authority::can('update', 'links' ) )
+        <li><a href="{{ route('links.index') }}">{{ Icon::console() }} Manage Links</a></li>
+		@endif
 			@if ( Authority::can('manage', 'achievements') )
 				<li><a href="{{ route('achievements.create') }}">{{ Icon::certificate() }} Create Achievement</a></li>
 			@endif

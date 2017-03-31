@@ -67,9 +67,9 @@ class LinksController extends ResourceServiceController {
 	 */
 	public function showByShortTitle( $name )
 	{
-		$this->service->addFilter('shorttitle',$name);
+		$this->service->addFilter('where','shorttitle',$name);
 		$link = $this->service->all()->take(1)->first();
-		if ($link != null) {
+		if ($link != null && $link->shorttitle == $name) {
 			return Redirect::to($link->url);
 		} else {
 			App::abort(404);
