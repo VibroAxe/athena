@@ -32,7 +32,7 @@ class SessionsController extends Controller {
 			$openId = new LightOpenID(Request::server('HTTP_HOST'));
 			
 			$openId->identity = 'http://steamcommunity.com/openid';
-			$openId->returnUrl = URL::route('sessions.create');
+			$openId->returnUrl = URL::route('sessions.create', true);
 			return $openId->authUrl();
 		});
 

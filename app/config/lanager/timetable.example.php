@@ -12,12 +12,12 @@ return [
   | Default view to open the timetable in
   | Options: agendaDay, agendaWeek, agendaMonth
    */
-	'defaultView' => 'agendaDay',
+	'defaultView' => 'agendaWeek',
 
   /*
   | Day of the week to start with
   | Monday is 1
    */
-	'firstDay' => 1,
+	'firstDay' => 3,
 
 ];

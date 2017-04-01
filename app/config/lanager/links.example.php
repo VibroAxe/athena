@@ -20,7 +20,19 @@ return [
 	*/
 	
 	[
-		'title'				=> 'Example',
-		'link'				=> 'http://www.example.com/',
+		'title'				=> 'Discord',
+		'link'				=> 'http://discord.gg/insomnia60',
 	],	
+	[
+ 		'title'       => 'Forums',
+		'link'        => 'http://forums.multiplay.com',
+  ],
+  [
+		  'title'     => 'Seat Picker',
+      'link'      => 'https://seatpicker.ttf-apps.com',
+  ],
+	[
+  		'title'       => 'Insomnia Gaming Festival',
+    	'link'        => 'http://www.insomniagamingfestival.com/',
+	],
 ];

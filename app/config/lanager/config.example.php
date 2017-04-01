@@ -13,6 +13,6 @@ return [
 	*/
 
   'installed'	=> true,
-  'title' => 'LANPortal',
+  'title' => 'Athena',
   'startPage' => '/pages/1',
 ];

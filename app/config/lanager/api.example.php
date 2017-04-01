@@ -7,7 +7,7 @@ return [
 	 * Set the CORS allowed origin domains here
 	 * null disables CORS access
 	 */
-		'origins' => null,
+		'origins' => ['https://athena.gg','https://www.athena.gg','https://www.theihunt.uk', 'https://test.theihunt.uk'],
 
 	/*
 	 * 'methods'
@@ -23,7 +23,7 @@ return [
 	 * Set the Allow-Credentials header
 	 * Use string not bool
 	 */  
-		'credentials' => 'false',
+		'credentials' => 'true',
 
 	];
 

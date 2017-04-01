@@ -58,7 +58,10 @@ return [
 			|--------------------------------------------------------------------------
 			| Permissions for all logged-in users
 			|--------------------------------------------------------------------------
-			*/
+			 */
+
+			// User Service Linking
+			$authority->allow('linkservice', 'users');
 
 			// Shouts
 			$authority->allow('create', 'shouts');

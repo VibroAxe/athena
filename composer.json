@@ -21,7 +21,8 @@
 		"mews/purifier": "1.0.1",
 		"dingo/api": "0.8.*",
 		"barryvdh/laravel-debugbar": "1.8.4",
-		"zeropingheroes/htmlpurifier-urischeme-steam": "dev-master"
+		"zeropingheroes/htmlpurifier-urischeme-steam": "dev-master",
+		"lusitanian/oauth": "dev-master"
 	},
 	"authors": [
 	{

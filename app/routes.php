@@ -14,7 +14,9 @@ function()
 	| Users
 	|--------------------------------------------------------------------------
 	*/
+	Route::get('users/link/{service}', ['as' => 'users.linkservice','uses' => 'UsersController@linkservice']);
 	Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'destroy']]);
+
 	Route::resource('user-roles', 'UserRolesController', ['only' => ['index', 'create', 'store', 'destroy']]);
 	Route::resource('user-achievements', 'UserAchievementsController', ['only' => ['index', 'create', 'edit', 'store', 'update', 'destroy']]);
 
@@ -120,7 +122,7 @@ function()
 	Route::get('links/{id}/toggle', ['as' => 'links.toggle','uses' => 'LinksController@toggle']);
 	Route::resource('links', 'LinksController');
 
-	Route::get('/{name}', ['as' => 'links.showbyshorttitle','uses' => 'LinksController@showByShortTitle']);
+	Route::get('{name}', ['as' => 'links.showbyshorttitle','uses' => 'LinksController@showByShortTitle']);
 });
 
 /*
