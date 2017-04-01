@@ -114,7 +114,8 @@ class User extends BaseModel implements UserInterface {
 				return true;
 
 			// Otherwise just check if they have the role
-			return ($assignedRole->name === $requiredRoleName);
+			if ($assignedRole->name === $requiredRoleName) 
+				return true;
 		}
 		return false;
 	}
