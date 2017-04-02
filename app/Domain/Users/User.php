@@ -23,6 +23,17 @@ class User extends BaseModel implements UserInterface {
 	 */
 	protected $presenter = 'Zeropingheroes\Lanager\Domain\Users\UserPresenter';
 
+	/*
+	 * A single user has many OAuthUser
+	 */
+	public function OAuths($service = null) {
+		if ($service == null) {
+			return $this->hasMany('Zeropingheroes\Lanager\Domain\UserOAuths\UserOAuth');
+		} else {
+			return $this->hasMany('Zeropingheroes\Lanager\Domain\UserOAuths\UserOAuth')->where("service",$service);
+		}
+	}
+
 	/**
 	 * A single user has many shouts
 	 * @return object Illuminate\Database\Eloquent\Relations\Relation

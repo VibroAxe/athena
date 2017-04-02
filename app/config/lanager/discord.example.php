@@ -16,5 +16,6 @@ return [
 
 	'id' => '',
 	'secret' => '',
+	'invite' => '',
 
 ];

@@ -10,9 +10,9 @@ use OAuth\Common\Token\TokenInterface;
 use OAuth\OAuth2\Token\StdOAuth2Token;
 use OAuth\OAuth2\Service\AbstractService;
 /**
- * Class EveOnline
+ * Class DiscordOAuthService
  */
-class DiscordService extends AbstractService
+class DiscordOAuthService extends AbstractService
 {
 	const SCOPE_IDENTIFY 				= 'identify';
 	const SCOPE_EMAIL					= 'email';

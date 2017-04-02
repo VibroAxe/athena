@@ -18,6 +18,7 @@
 			</thead>
 			<tbody>
 			@foreach( $users as $user )
+				@if ($user->visible)
 				<?php $state = $user->state; ?>
 				<tr>
 					<td>
@@ -55,6 +56,7 @@
 						</td>
 					@endif
 				</tr>
+				@endif
 			@endforeach
 			</tbody>
 		</table>

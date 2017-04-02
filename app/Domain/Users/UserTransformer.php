@@ -13,6 +13,7 @@ class UserTransformer extends TransformerAbstract {
 	{
 		return [
 			'id'			=> (int) $user->id,
+			'visible'		=> $user->visible,
 			'username'		=> $user->username,
 			'steam_id_64'	=> $user->steam_id_64,
 			'ip'			=> $user->ip,
