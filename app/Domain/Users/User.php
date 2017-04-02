@@ -23,6 +23,16 @@ class User extends BaseModel implements UserInterface {
 	 */
 	protected $presenter = 'Zeropingheroes\Lanager\Domain\Users\UserPresenter';
 
+	
+	/*
+	 * A single user has many System Specs
+	 * @return object Illuminate\Database\Eloquent\Relations\Relation
+	 */
+	public function SystemSpecs() {
+		return $this->hasMany('Zeropingheroes\Lanager\Domain\UserSystemSpecs\UserSystemSpec');
+	}
+
+
 	/*
 	 * A single user has many OAuthUser
 	 */

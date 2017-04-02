@@ -17,6 +17,8 @@ function()
 	Route::get('users/link/{service}', ['as' => 'users.linkservice','uses' => 'UsersController@linkservice']);
 	Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'destroy']]);
 
+	Route::resource('users.systemspecs', 'SystemSpecsController', ['only' => ['index', 'store', 'destroy']]);
+
 	Route::resource('user-roles', 'UserRolesController', ['only' => ['index', 'create', 'store', 'destroy']]);
 	Route::resource('user-achievements', 'UserAchievementsController', ['only' => ['index', 'create', 'edit', 'store', 'update', 'destroy']]);
 

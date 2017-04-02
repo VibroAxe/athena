@@ -95,6 +95,7 @@
 			
 		@elseif ( Input::get('tab') == 'system-specs' )
 			Coming soon
+			@include('user-systemspecs.partials.list', ['systemSpecs' => $user->systemSpecs()->get()])
 		@elseif ( Input::get('tab') == 'achievements' )
 			@include('user-achievements.partials.ribbon', ['userAchievements' => $user->userAchievements()->orderBy('lan_id','desc')->orderBy('created_at','desc')->get()])
 			@include('user-achievements.partials.list-singleuser', ['userAchievements' => $user->userAchievements()->orderBy('lan_id','desc')->orderBy('created_at','desc')->get()] )
