@@ -1,4 +1,4 @@
-<?php namespace Zeropingheroes\Lanager\Domain\EventSignups;
+<?php namespace Zeropingheroes\Lanager\Domain\UserSystemSpecs;
 
 use Zeropingheroes\Lanager\Domain\ResourceService;
 use Zeropingheroes\Lanager\Domain\Users\UsersService;
