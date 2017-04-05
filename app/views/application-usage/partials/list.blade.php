@@ -28,8 +28,8 @@
 							<a href="#app{{$application['id']}}" data-toggle="collapse" class="btn btn-default">More</a>
 							<span id="app{{$application['id']}}" class="collapse">
 						@endif
-							<a href="{{ URL::route('users.show', $user['id']) }}">
-								<img src="{{ $user['avatar_small']}}">
+							<a href="{{ URL::route('users.show', $user['id']) }}" title="{{ $user['username'] }}">
+								<img src="{{ $user['avatar_small']}}" alt="{{ $user['username'] }}">
 							</a>
 						@endif
 				@endforeach
