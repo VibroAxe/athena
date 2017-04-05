@@ -58,7 +58,8 @@ class SessionsController extends Controller {
 			{
 				$user = UserImport::fromSteam( substr($openId->identity, -17) );
 				Auth::login($user);
-				if ( $user->steam_visibility != 3 ) return Redirect::route('users.show', $user->id);
+				//if ( $user->steam_visibility != 3 ) 
+					return Redirect::route('users.show', $user->id);
 				return Redirect::to('/');
 			}
 			Notification::danger('Unable to validate your OpenID');
