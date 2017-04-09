@@ -46,8 +46,8 @@ return [
     'options' => [
         'empty_element_suffix' => ' />',
         'tab_width' => 4,
-        'no_markup' => true,
-        'no_entities' => true,
+        'no_markup' => false,
+        'no_entities' => false,
         'predef_urls' => [],
         'predef_titles' => [],
 

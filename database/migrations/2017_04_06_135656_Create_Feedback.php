@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserOAuths extends Migration {
+class CreateFeedback extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,31 +12,13 @@ class CreateUserOAuths extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('user_oauths', function(Blueprint $table)
+		Schema::create('feedbacks', function(Blueprint $table)
 		{
 			$table->increments('id');
-
+			$table->integer('priority');
+			$table->text('feedback');
 			$table->integer('user_id')
-				->unsigned();
-
-			$table->string('service');
-
-			$table->bitInteger('service_id')
-				->nullable();
-
-			$table->string('username')
-				->nullable();
-
-			$table->string('avatar')
-				->nullable();
-
-			$table->string('token',100)
-				->nullable();
-
-			$table->timestamp('tokenexpires')
-				->nullable();
-
-			$table->string('refreshtoken',100)
+				->unsigned()
 				->nullable();
 
 			$table->timestamps();
@@ -46,8 +28,8 @@ class CreateUserOAuths extends Migration {
 				->on('users')
 				->onUpdate('cascade')
 				->onDelete('cascade');
-
 		});
+
 	}
 
 	/**
@@ -57,7 +39,7 @@ class CreateUserOAuths extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('user_oauths');
+		Schema::drop('feedbacks');
 	}
 
 }

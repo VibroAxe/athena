@@ -123,6 +123,13 @@ function()
 	 */
 	Route::get('links/{id}/toggle', ['as' => 'links.toggle','uses' => 'LinksController@toggle']);
 	Route::resource('links', 'LinksController');
+	/*
+	|--------------------------------------------------------------------------
+	| Links
+	|--------------------------------------------------------------------------
+	 */
+	Route::resource('feedback', 'FeedbackController');
+
 
 	Route::get('{name}', ['as' => 'links.showbyshorttitle','uses' => 'LinksController@showByShortTitle']);
 });

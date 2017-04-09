@@ -40,5 +40,15 @@ return [
 			'Cache.SerializerPath'		=> storage_path().'/purifier',
 			'URI.AllowedSchemes'		=> ['http', 'https', 'steam'],
 		],
+		'feedbackpreview' => [
+			'HTML.Doctype'				=> 'XHTML 1.0 Strict',
+			'HTML.Allowed'				=> 'b,strong,i,em',
+			'CSS.AllowedProperties'		=> '',
+			'AutoFormat.AutoParagraph'	=> false,
+			'AutoFormat.RemoveEmpty'	=> true,
+			'AutoFormat.Linkify'		=> false,
+			'Cache.SerializerPath'		=> storage_path().'/purifier',
+			'URI.AllowedSchemes'		=> ['http', 'https', 'steam'],
+			],
 	],
 ];

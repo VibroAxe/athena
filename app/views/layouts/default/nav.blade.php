@@ -96,6 +96,12 @@ if ( Config::get('lanager/nav.showExtras',true) ) {
 				'link' => URL::route('event-types.index'),
       ];
   }
+  if ( Config::get('lanager/nav.showExtrasFeedback', true) ) {
+	  		$extras[] = [
+				'title' => 'Give Feedback',
+				'link' => URL::route('feedback.create'),
+			];
+  }
     
 
   $navbar[] = [
