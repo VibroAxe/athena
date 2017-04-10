@@ -14,7 +14,8 @@ function()
 	| Users
 	|--------------------------------------------------------------------------
 	*/
-	Route::get('users/link/{service}', ['as' => 'users.linkservice','uses' => 'UsersController@linkservice']);
+	Route::post('users/link/{service}', ['as' => 'users.linkservice','uses' => 'UserLinkController@linkservice']);
+	Route::get('users/link/{service}', ['as' => 'users.linkservice','uses' => 'UserLinkController@linkservice']);
 	Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'destroy']]);
 
 	Route::resource('users.systemspecs', 'UserSystemSpecsController', ['only' => ['index', 'store', 'destroy']]);

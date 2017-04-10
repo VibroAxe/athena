@@ -2,6 +2,7 @@
 
 use Illuminate\Routing\Controller;
 use Zeropingheroes\Lanager\Domain\Users\UserService;
+use Zeropingheroes\Lanager\Domain\MPUK\MPUKUserService;
 use View;
 use Redirect;
 use Auth;
@@ -24,6 +25,7 @@ class UserLinkController extends Controller {
 	public function __construct()
 	{
 		$this->userservice = new UserService;
+		$this->mpukservice = new MPUKUserService;
 	}
 
 	public function linkservice($service) {
@@ -38,6 +40,10 @@ class UserLinkController extends Controller {
 				case "battlenet":
 					return $this->linkToBattlenet($user);
 					break;
+				case "MPUK":
+				case "mpuk":
+					return $this->linkToMPUK($user);
+					break;
 				default:
 					Notification::danger('Unable to link your profile with the requested service');
 					break;
@@ -46,6 +52,42 @@ class UserLinkController extends Controller {
 			Notification::danger('Unable to link for a profile which is not your own');
 		}
 		return Redirect::route('users.show',['id' => 'me']);
+	}
+
+	protected function linkToMPUK($user) {
+		if (Input::get('username',null) == null) {
+			return View::make('userlink.link')
+				->with('title', "Link to MPUK")
+				->with('service','mpuk');
+		} else {
+			$model = $user->OAuths('MPUK')->get();
+			if (count($model)) {
+				$model = $model[0];
+			} else {
+				$model = new UserOAuth();
+			}
+			$this->mpukservice->addFilter('where', 'fullname',Input::get('fullname'));
+			$this->mpukservice->addFilter('where', 'username',Input::get('username'));
+			$this->mpukservice->addFilter('where', 'email',Input::get('email'));
+			$results = $this->mpukservice->all();
+			if (count($results)) {
+				$model->service = "MPUK";
+				$model->user_id = $user->id;
+				$model->username = $results[0]->username;
+				$model->service_id = $results[0]->id;
+				$model->save();
+				//we have now linked the user to mpukman
+				//next try and see if we need to award any achievements
+				return Redirect::route('users.show',['id' => 'me']);
+			} else {
+				Notification::danger('Unable to link to MPUK');
+				return Redirect::route('users.show',['id' => 'me']);
+			}
+
+			//Decode the input
+			//Create a new MPUKUsers service to search
+			//If the user was found, store the link
+		}
 	}
 
 	protected function linkToBattlenet($user) {
