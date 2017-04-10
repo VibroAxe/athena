@@ -44,6 +44,14 @@ class UserLinkController extends Controller {
 				case "mpuk":
 					return $this->linkToMPUK($user);
 					break;
+				case "Origin":
+				case "origin":
+					return $this->linkToOrigin($user);
+					break;
+				case "TicketFactory":
+				case "ticketfactory":
+					return $this->linkToTicketFactory($user);
+					break;
 				default:
 					Notification::danger('Unable to link your profile with the requested service');
 					break;
@@ -52,6 +60,50 @@ class UserLinkController extends Controller {
 			Notification::danger('Unable to link for a profile which is not your own');
 		}
 		return Redirect::route('users.show',['id' => 'me']);
+	}
+	
+	protected function linkToTicketFactory($user) {
+		if (Input::get('email',null) == null) {
+			return View::make('userlink.link')
+				->with('title', "Link to TicketFactory")
+				->with('service','ticketfactory');
+		} else {
+			$model = $user->OAuths('TicketFactory')->get();
+			if (count($model)) {
+				$model = $model[0];
+			} else {
+				$model = new UserOAuth();
+			}
+			$results = $this->mpukservice->all();
+			$model->service = "TicketFactory";
+			$model->user_id = $user->id;
+			$model->username = Input::get('email');
+			$model->save();
+			return Redirect::route('users.show',['id' => 'me']);
+
+		}
+	}
+
+	protected function linkToOrigin($user) {
+		if (Input::get('username',null) == null) {
+			return View::make('userlink.link')
+				->with('title', "Link to Origin")
+				->with('service','origin');
+		} else {
+			$model = $user->OAuths('Origin')->get();
+			if (count($model)) {
+				$model = $model[0];
+			} else {
+				$model = new UserOAuth();
+			}
+			$results = $this->mpukservice->all();
+			$model->service = "Origin";
+			$model->user_id = $user->id;
+			$model->username = Input::get('username');
+			$model->save();
+			return Redirect::route('users.show',['id' => 'me']);
+
+		}
 	}
 
 	protected function linkToMPUK($user) {
