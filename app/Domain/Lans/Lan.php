@@ -9,7 +9,9 @@ class Lan extends BaseModel {
 
 	protected $presenter = 'Zeropingheroes\Lanager\Domain\Lans\LanPresenter';
 
-	protected $fillable = ['name', 'start', 'end', 'published'];
+	protected $fillable = ['name', 'start', 'end', 'published' ,'achievement_id', 'iprange'];
+
+	protected $nullable = ['achievement_id', 'iprange'];
 
 	protected $optional = ['published'];
 
@@ -20,6 +22,10 @@ class Lan extends BaseModel {
 	public function userAchievements()
 	{
 		return $this->hasMany('Zeropingheroes\Lanager\Domain\UserAchievements\UserAchievement');
+	}
+
+	public function achievement() {
+		return $this->belongsTo('Zeropingheroes\Lanager\Domain\Achievements\Achievement');
 	}
 
 }

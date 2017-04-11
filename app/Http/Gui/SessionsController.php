@@ -58,6 +58,8 @@ class SessionsController extends Controller {
 			{
 				$user = UserImport::fromSteam( substr($openId->identity, -17) );
 				Auth::login($user);
+				//We only update ip and things on login. Clear sessions before a lan to force login from the event
+				$user->checkAndUpdateAchievements();
 				//if ( $user->steam_visibility != 3 ) 
 					return Redirect::route('users.show', $user->id);
 				return Redirect::to('/');

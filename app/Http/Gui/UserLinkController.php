@@ -79,6 +79,7 @@ class UserLinkController extends Controller {
 			$model->user_id = $user->id;
 			$model->username = Input::get('email');
 			$model->save();
+			$user->checkAndUpdateAchievements();
 			return Redirect::route('users.show',['id' => 'me']);
 
 		}
@@ -96,11 +97,11 @@ class UserLinkController extends Controller {
 			} else {
 				$model = new UserOAuth();
 			}
-			$results = $this->mpukservice->all();
 			$model->service = "Origin";
 			$model->user_id = $user->id;
 			$model->username = Input::get('username');
 			$model->save();
+			$user->checkAndUpdateAchievements();
 			return Redirect::route('users.show',['id' => 'me']);
 
 		}
@@ -130,6 +131,7 @@ class UserLinkController extends Controller {
 				$model->save();
 				//we have now linked the user to mpukman
 				//next try and see if we need to award any achievements
+				$user->checkAndUpdateAchievements(true);
 				return Redirect::route('users.show',['id' => 'me']);
 			} else {
 				Notification::danger('Unable to link to MPUK');
@@ -179,6 +181,7 @@ class UserLinkController extends Controller {
 
 			//Save the model
 			$model->save();
+			$user->checkAndUpdateAchievements();
 			return Redirect::route('users.show',['id' => 'me']);
 		}
 	}
@@ -223,6 +226,7 @@ class UserLinkController extends Controller {
 
 			//Save the model
 			$model->save();
+			$user->checkAndUpdateAchievements();
 
 			try {
 				$result = json_decode( $discord->request('/invites/'.Config::get('lanager/discord.invite'), 'POST'), true);

@@ -34,6 +34,23 @@
         </div>
 </div>
 
+{{ ControlGroup::generate(
+	Form::label('achievement_id', 'Attendance Achievement'),
+	Form::select('achievement_id', $achievements),
+	Form::help('Select and Achievement to auto grant attendance to users logging in during the event active period'),
+	2,
+	9
+)
+}}
+
+{{ ControlGroup::generate(
+	Form::label('iprange', 'IP Range'),
+	Form::text('iprange',NULL,['placeholder' => 'Valid IP Subnets for the LAN (comma seperated)', 'maxlength' => 255]),
+	Form::help('Add subnets here to limit the attendance achievement to only valid users eg: 10.10.8.0/22'),
+	2,
+	9
+)->withAttributes( ['class' => 'required'] )
+}}
 
 <div class="row">
 	<div class="col-md-2 col-md-offset-2">

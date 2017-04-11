@@ -26,22 +26,30 @@
 					Accounts
 				</a>
 			</li>
+<?php /*
 			<li role="presentation" class="<?php if (Input::get('tab') == 'system-specs') echo 'active'; ?>">
 				<a href="{{ route('users.show', ['user' => $user->id, 'tab' => 'system-specs'] ) }}">
 					System Specs
 				</a>
-			</li>
+				</li> */ ?>
 			<li role="presentation" class="<?php if (Input::get('tab') == 'achievements') echo 'active'; ?>">
 				<a href="{{ route('users.show', ['user' => $user->id, 'tab' => 'achievements'] ) }}">
 					Achievements {{ View::make('badge', ['collection' => $user->userAchievements] ) }}
 				</a>
 			</li>
-			<li role="presentation" class="<?php if (Input::get('tab') == 'shouts') echo 'active'; ?>">
+			@if (($user->id == 'me') || ( Auth::check() AND $user->id == Auth::user()->id ))
+				<li role="presentation" class="<?php if (Input::get('tab') == 'game-codes') echo 'active'; ?>">
+					<a href="{{ route('users.show', ['user' => $user->id, 'tab' => 'game-codes'] ) }}">
+						Game Codes
+					</a>
+				</li>
+			@endif
+			<!-- <li role="presentation" class="<?php if (Input::get('tab') == 'shouts') echo 'active'; ?>">
 				<a href="{{ route('users.show', ['user' => $user->id, 'tab' => 'shouts'] ) }}">
 					Shouts {{ View::make('badge', ['collection' => $user->shouts] ) }}
 				</a>
-			</li>
-			@if ( Auth::check() AND $user->id == Auth::user()->id )
+			</li> -->
+			@if (($user->id == 'me') || ( Auth::check() AND $user->id == Auth::user()->id ))
 				@if (Config::Get('lanager/nav.showApi',false))
 				<li role="presentation" class="<?php if (Input::get('tab') == 'api') echo 'active'; ?>">
 					<a href="{{ route('users.show', ['user' => $user->id, 'tab' => 'api'] ) }}">
@@ -100,6 +108,8 @@
 		@elseif ( Input::get('tab') == 'system-specs' )
 			Coming soon
 			@include('user-systemspecs.partials.list', ['systemSpecs' => $user->systemSpecs()->get()])
+		@elseif ( Input::get('tab') == 'game-codes')
+			@include('user-gamecodes.partials.list', ['user' => $user]);
 		@elseif ( Input::get('tab') == 'achievements' )
 			@include('user-achievements.partials.ribbon', ['userAchievements' => $user->userAchievements()->orderBy('lan_id','desc')->orderBy('created_at','desc')->get()])
 			@include('user-achievements.partials.list-singleuser', ['userAchievements' => $user->userAchievements()->orderBy('lan_id','desc')->orderBy('created_at','desc')->get()] )

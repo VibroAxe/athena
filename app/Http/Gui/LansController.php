@@ -1,6 +1,7 @@
 <?php namespace Zeropingheroes\Lanager\Http\Gui;
 
 use Zeropingheroes\Lanager\Domain\Lans\LanService;
+use Zeropingheroes\Lanager\Domain\Achievements\AchievementService;
 use View;
 use Redirect;
 
@@ -35,9 +36,12 @@ class LansController extends ResourceServiceController {
 	 */
 	public function create()
 	{
+		$a_service = new AchievementService;
+		$achievements = ['' => ''] + lists( $a_service->all(), 'id', 'name' );
 		return View::make( 'lans.create' )
 					->with( 'title', 'Create LAN' )
-					->with( 'lan', null );
+					->with( 'lan', null )
+					->with( 'achievements', $achievements);
 	}
 
 	/**
@@ -64,10 +68,13 @@ class LansController extends ResourceServiceController {
 	public function edit($id)
 	{
 		$lan = $this->service->single( $id );
+		$a_service = new AchievementService;
+		$achievements = ['' => ''] + lists( $a_service->all(), 'id', 'name' );
 
 		return View::make( 'lans.edit' )
 					->with( 'title', 'Edit LAN' )
-					->with( 'lan', $lan );
+					->with( 'lan', $lan )
+					->with( 'achievements', $achievements);
 	}
 
 	protected function redirectAfterStore( $resource )

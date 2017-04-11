@@ -22,7 +22,7 @@ class MPUKUserService extends ResourceService {
 
 	protected function readAuthorised()
 	{
-		return $this->user->hasRole('Feedback Admin');
+		return true;
 	}
 
 	protected function storeAuthorised()

@@ -27,23 +27,17 @@ if ( Config::get('lanager/nav.showShouts',false) ) {
 }
 if ( Config::get('lanager/nav.showEvents',true) ) {
   $navbar[] = [ 
-    'title' => 'Events',
+    'title' => 'Schedule',
     'link' => URL::route('events.index'),
   ];
 }
-if ( Config::get('lanager/nav.showUsers',true) ) {
-  $navbar[] = [
-    'title' => 'Users',
-    'link' => URL::route('users.index'),
-  ];
-}
-if ( Config::get('lanager/nav.showGames',true) ) {
-  $navbar[] = [
-    'title' => 'Games',
-    'link' => URL::route('application-usage.index'),
-  ];
-}
 
+if ( Config::get('lanager/nav.showGames',true) ) {
+	  $navbar[] = [
+    	'title' => 'Current Games',
+    	'link' => URL::route('application-usage.index'),
+  	];
+}
 
 if ( Config::get('lanager/nav.showExtras',true) ) {
   $extras = [];
@@ -66,6 +60,12 @@ if ( Config::get('lanager/nav.showExtras',true) ) {
       'link' => URL::route('achievements.index'),
       ];
   }
+	if ( Config::get('lanager/nav.showUsers',true) ) {
+	  $extras[] = [
+	    'title' => 'Users',
+	    'link' => URL::route('users.index'),
+	  ];
+	}
   if ( Config::get('lanager/nav.showExtrasUserAchievements',true) ) {
 			$extras[] = [
 				'title' => 'User Achievements',
