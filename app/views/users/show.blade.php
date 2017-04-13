@@ -71,7 +71,7 @@
 				@forelse( $user->OAuths()->get() as $OAuth)
 				<?php $services[$OAuth->service] = 0; 
 				//Don't display ticketfactory emails for users
-				if (($OAuth->service == "TicketFactory") && (!($user->id == 'me' || (Auth::User() != null && $user->id == Auth::User()->id))))
+if (($OAuth->service == "MPUK") && (!($user->id == 'me' || (Auth::User() != null && $user->id == Auth::User()->id))))
 						break;
 				?>
 				<div class="panel panel-default">

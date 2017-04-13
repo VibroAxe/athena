@@ -1,3 +1,7 @@
+<p>
+This form allows you to link to your old MPUKMan account in order to collect legacy account data. This account is seperate to your forum account  and is the one you would have used for ticketing / the seat picker.
+</p>
+
 {{ ControlGroup::generate(
 	Form::label('username', 'MPUK Username'),
 	Form::text('username',NULL,['placeholder' => 'Your MPUK account username', 'maxlength' => 255]),

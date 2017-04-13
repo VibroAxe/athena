@@ -258,9 +258,9 @@ class User extends BaseModel implements UserInterface {
 			$lanservice = new LanService;
 			$lans = $lanservice->all();
 			$attended = 0;
-			foreach ($lans as $l) {
-				if (substr($l->name,0,8) === "Insomnia") {
-					if ($l->achievement_id != null) {
+			foreach ($lans as $lan) {
+				if (substr($lan->name,0,8) === "Insomnia") {
+					if ($lan->achievement_id != null) {
 						if (count($this->userAchievements()->where('lan_id',$lan->id)->where('achievement_id',$lan->achievement_id)->first()) == 1) {
 							$attended++;
 						}
@@ -285,7 +285,7 @@ class User extends BaseModel implements UserInterface {
 						//user does not have achievement
 						$achievement = new \Zeropingheroes\Lanager\Domain\UserAchievements\UserAchievement;
 						$achievement->achievement_id = $silver_aid;
-						$achievement->lan_id = $lan->id;
+						$achievement->lan_id = $currentlan->id;
 						$achievement->user_id = $this->id;
 						$achievement->save();
 					}
@@ -298,7 +298,7 @@ class User extends BaseModel implements UserInterface {
 						//user does not have achievement
 						$achievement = new \Zeropingheroes\Lanager\Domain\UserAchievements\UserAchievement;
 						$achievement->achievement_id = $gold_aid;
-						$achievement->lan_id = $lan->id;
+						$achievement->lan_id = $currentlan->id;
 						$achievement->user_id = $this->id;
 						$achievement->save();
 					}
@@ -314,7 +314,7 @@ class User extends BaseModel implements UserInterface {
 						//user does not have achievement
 						$achievement = new \Zeropingheroes\Lanager\Domain\UserAchievements\UserAchievement;
 						$achievement->achievement_id = $ruby_aid;
-						$achievement->lan_id = $lan->id;
+						$achievement->lan_id = $currentlan->id;
 						$achievement->user_id = $this->id;
 						$achievement->save();
 					}
