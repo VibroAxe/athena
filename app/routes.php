@@ -150,7 +150,8 @@ function()
 		if (Config::get("lanager/api.origins",null) != null) {
 			if  (count(Config::get("lanager/api.origins") > 1)) {
 				foreach(Config::get("lanager/api.origins") as $origin) {
-					header("Access-Control-Allow-Origin: ".$origin);
+					if ($_SERVER['HTTP_ORIGIN'] == $origin)
+						header("Access-Control-Allow-Origin: ".$origin);
 				}
 			}
 			else {
