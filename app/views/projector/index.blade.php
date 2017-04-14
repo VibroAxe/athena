@@ -59,7 +59,6 @@ body {
 
 </style>
 		<script src="{{url()."/js/projector.js"}}"></script> 
-		<script src="{{url()."/js/jquery.rotate.1-1.js"}}"></script>
 		<div id="logo">
 		<img src="/img/athenalogo_bg.png" class="projector-logo-bg">
 		<img src="/img/athenalogo_fg.png" class="projector-logo-fg" id="projector-logo-fg">
