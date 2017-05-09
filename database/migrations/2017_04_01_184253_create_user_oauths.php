@@ -21,7 +21,7 @@ class CreateUserOAuths extends Migration {
 
 			$table->string('service');
 
-			$table->bitInteger('service_id')
+			$table->bigInteger('service_id')
 				->nullable();
 
 			$table->string('username')
