@@ -51,6 +51,9 @@
 			@if ( Authority::can('read', 'logs') )
 				<li><a href="{{ route('logs.index') }}">{{ Icon::console() }} View Logs</a></li>
 			@endif
+			@if ( Authority::can('read', 'feedback') )
+				<li><a href="{{ route('feedback.index') }}">{{ Icon::console() }} View Feedback</a></li>
+			@endif
 		</ul>
 	</li>
 @endif
