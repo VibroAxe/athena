@@ -11,7 +11,7 @@
 					@if (file_exists(public_path()."/upload/gamepics/".$application['name'].".png"))
 						<img src="{{ "/upload/gamepics/".$application['name'].".png" }}" title="{{ $application['name'] }}" alt="{{ $application['name'] }}">
 					@else
-						<h3> {{ $application['name'] }} </h3>
+						<h3> {{ Purifier::clean($application['name'], 'shout') }} </h3>
 					@endif
 				@endif
 			</td>

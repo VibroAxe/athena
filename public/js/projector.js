@@ -1,4 +1,4 @@
-var slideID = -1
+var slideID = -1;
 var ajaxTimer;
 var currentiFrame = 1;
 var currentSlideFrame = $('#slideFrame' + currentiFrame);
@@ -44,29 +44,23 @@ function slideDataLoad(data) {
     for(var i=0; i<dataLength; i++) {
       if (foundIndex == -1) {
         if (data[i].id == slideID)  {
-          foundIndex = i;;
+          foundIndex = i;
         }
       } else {
-        if (data[i].published == 1) {
-          //Data is published
-          //is it within date range
-          if (true) {
-            foundIndex = i;
-            break;
-          }
+        if (data[i].isactive == 1) {
+          //Slide is active
+          foundIndex = i;
+          break;
         }
       }
     }
 
     if (foundIndex == -1 || data[foundIndex].id == slideID) {
-      for (var i=0; i<dataLength; i++) {
-        if (data[i].published == 1) {
-          //data is published
-          //is it within date range
-          if (true) {
-            foundIndex=i;
-            break;
-          }
+      for (i=0; i<dataLength; i++) {
+        if (data[i].isactive == 1) {
+          //Slide is active
+          foundIndex=i;
+          break;
         }
       }
     }
@@ -91,7 +85,10 @@ function slideDataLoad(data) {
 
     if (nextSlideFrame.attr('src') != slideUrl) {
         nextSlideFrame.attr('src', slideUrl);
-    }
+    } else {
+		//If we only have two slides/the slide is already loaded don't forget to switch frames
+		switchFrames();
+	}
 
     //nextSlideDiv.fadeIn(fadeDelay);
     //currentSlideDiv.fadeOut(fadeDelay);
