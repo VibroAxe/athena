@@ -17,7 +17,7 @@ class Updatelans extends Migration {
 			$table->integer('achievement_id')
 				->unsigned()
 				->nullable()
-				->after('achievement_id');
+				->after('published');
 
 			$table->text('iprange')
 				->nullable()
