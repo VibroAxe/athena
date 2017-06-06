@@ -229,7 +229,9 @@ class UserLinkController extends Controller {
 			$user->checkAndUpdateAchievements();
 
 			try {
-				$result = json_decode( $discord->request('/invites/'.Config::get('lanager/discord.invite'), 'POST'), true);
+				if (Config::get('lanager/discord.invite','') != "") {
+					$result = json_decode( $discord->request('/invites/'.Config::get('lanager/discord.invite'), 'POST'), true);
+				}
 			} catch (Exception $ex) {};
 
 			return Redirect::route('users.show',['id' => 'me']);
